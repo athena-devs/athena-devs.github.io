@@ -2,8 +2,15 @@
   {
     "name": "Saymon Macedo",
     "github_user": "fable00",
-    "role": "Software Developer",
-    "bio": "Backend Node.Js, Java Spring Boot & Infraestrutura de Sistemas.",
+    "role": "Backend Developer",
+    "bio": "Express.JS, Spring Boot, Docker, Grafana+",
     "email": "saymonmcedo00@gmail.com"
+  },
+  {
+    "name": "Alysson Eduardo",
+    "github_user": "allysonedu",
+    "role": "FullStack Developer",
+    "bio": "C#, React, Redux, NextJS+",
+    "email": "allysonedu@gmail.com"
   }
 ]
