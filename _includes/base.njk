@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ site.title }}</title>
-
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <style type="text/tailwindcss">
@@ -14,7 +13,6 @@
         --color-athena-dark: {{ site.colors.dark }};
       }
       
-      /* Força a estratégia de classe para o Dark Mode no Tailwind v4 */
       @custom-variant dark (&:where(.dark, .dark *));
     </style>
 
