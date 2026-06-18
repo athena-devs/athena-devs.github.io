@@ -1,0 +1,14 @@
+[
+  {
+    "title": "voice-memo",
+    "type": "Projeto Recente",
+    "description": "Nossa ferramenta inteligente para gravação e gerenciamento de notas por voz. Desenvolvida focando em usabilidade e performance.",
+    "link": "https://github.com/athena-devs/voice-memo"
+  },
+  {
+    "title": "Aero-Biker",
+    "type": "Full-Stack",
+    "description": "Sistema conteinerizado utilizando Docker e PostgreSQL para o ecossistema interno.",
+    "link": "https://github.com/projects-univesp/aero-biker"
+  }
+]

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-br" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ site.title }}</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style type="text/tailwindcss">
+      @theme {
+        --color-athena-gold: {{ site.colors.gold }};
+        --color-athena-bronze: {{ site.colors.bronze }};
+        --color-athena-dark: {{ site.colors.dark }};
+      }
+      
+      /* Força a estratégia de classe para o Dark Mode no Tailwind v4 */
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+
+    <script>
+      if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+
+  <body class="bg-amber-50/40 dark:bg-[#120b05] text-stone-800 dark:text-stone-200 antialiased font-sans transition-colors duration-300 flex flex-col min-h-screen">
+
+    <button onclick="toggleTheme()" class="fixed bottom-6 right-6 z-50 p-3 bg-athena-gold hover:bg-amber-600 text-white rounded-full shadow-lg transition-transform hover:scale-110 cursor-pointer" aria-label="Alternar tema">
+      <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+      </svg>
+    </button>
+
+    <nav class="sticky top-0 z-40 bg-white/80 dark:bg-[#120b05]/80 backdrop-blur-md border-b border-amber-200/40 dark:border-stone-800">
+      <div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center">
+        <span class="font-extrabold text-xl tracking-wider text-athena-gold flex items-center gap-2">
+          <span>🏛️</span> ATHENA-DEVS
+        </span>
+        <div class="space-x-4 font-medium text-sm text-stone-600 dark:text-stone-400">
+          <a href="#about" class="hover:text-athena-gold transition">Sobre</a>
+          <a href="#members" class="hover:text-athena-gold transition">Equipe</a>
+          <a href="#projects" class="hover:text-athena-gold transition">Projetos</a>
+          <a href="#contact" class="hover:text-athena-gold transition">Contato</a>
+        </div>
+      </div>
+    </nav>
+
+    {{ content | safe }}
+
+    <footer class="w-full px-4 py-6 border-t border-amber-200/30 dark:border-stone-800 text-center text-xs text-stone-400 mt-auto">
+      &copy; 2026 Athena-Devs. Todos os direitos reservados.
+    </footer>
+
+    <script>
+      const themeIconPath = document.querySelector("#theme-icon path");
+      const moonIcon = "M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z";
+      const sunIcon = "M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z";
+
+      function updateIcon() {
+        if (!themeIconPath) return;
+        if (document.documentElement.classList.contains("dark")) {
+          themeIconPath.setAttribute("d", sunIcon);
+        } else {
+          themeIconPath.setAttribute("d", moonIcon);
+        }
+      }
+
+      function toggleTheme() {
+        if (document.documentElement.classList.contains("dark")) {
+          document.documentElement.classList.remove("dark");
+          localStorage.setItem("theme", "light");
+        } else {
+          document.documentElement.classList.add("dark");
+          localStorage.setItem("theme", "dark");
+        }
+        updateIcon();
+      }
+
+      updateIcon();
+    </script>
+  </body>
+</html>

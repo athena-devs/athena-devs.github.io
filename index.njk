@@ -1,0 +1,84 @@
+---
+layout: base.njk
+---
+
+<main class="max-w-4xl mx-auto px-4 pt-12 pb-6 space-y-16 flex-grow">
+
+  <section id="about" class="pt-8 flex flex-col md:flex-row items-center gap-8 md:gap-12">
+    <div class="w-32 h-32 md:w-40 md:h-40 rounded-2xl border-4 border-athena-gold overflow-hidden shadow-md shrink-0 bg-athena-dark">
+      <img src="{{ about.image_url }}" alt="Athena Logo" class="w-full h-full object-cover">
+    </div>
+    <div class="space-y-4 text-center md:text-left">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-stone-900 dark:text-white">
+        {{ about.title_start }} <span class="text-athena-gold">{{ about.title_highlight }}</span>
+      </h1>
+      <p class="text-lg text-stone-600 dark:text-stone-400 leading-relaxed">
+        {{ about.description }}
+      </p>
+      <div class="pt-2 flex flex-wrap justify-center md:justify-start gap-3">
+        <a href="{{ site.github_org }}" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-athena-gold hover:bg-amber-600 rounded-lg transition shadow-md">
+          Acessar Organização
+        </a>
+        <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-stone-700 dark:text-stone-200 bg-stone-200/60 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 rounded-lg transition">
+          Fale Conosco
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="members" class="space-y-6">
+    <div class="border-b border-amber-200/40 dark:border-stone-800 pb-3">
+      <h2 class="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">Nossos Membros</h2>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      {% for member in members %}
+      <div class="bg-white dark:bg-[#1a110a] p-6 rounded-xl border border-amber-200/30 dark:border-stone-800 shadow-sm hover:shadow-md transition flex flex-col items-center text-center space-y-4">
+
+        <img src="https://avatars.githubusercontent.com/{{ member.github_user }}" alt="{{ member.name }}" class="w-20 h-20 rounded-full border-2 border-athena-gold object-cover shadow-sm" onerror="this.src='https://ui-avatars.com/api/?name={{ member.name | urlencode }}&background=c29343&color=fff'" />
+
+        <div>
+          <h3 class="text-lg font-bold text-stone-900 dark:text-white">{{ member.name }}</h3>
+          <p class="text-xs text-athena-gold font-semibold uppercase tracking-wider mb-1">{{ member.role }}</p>
+          <p class="text-sm text-stone-600 dark:text-stone-400">{{ member.bio }}</p>
+        </div>
+
+        <div class="flex gap-4 pt-2">
+          <a href="https://github.com/{{ member.github_user }}" target="_blank" class="text-stone-500 hover:text-athena-gold dark:text-stone-400 dark:hover:text-athena-gold transition" aria-label="GitHub">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+          </a>
+          <a href="mailto:{{ member.email }}" class="text-stone-500 hover:text-athena-gold dark:text-stone-400 dark:hover:text-athena-gold transition" aria-label="Email">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      {% else %}
+         <p>Nenhum membro cadastrado ainda.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="projects" class="space-y-6">
+    <div class="border-b border-amber-200/40 dark:border-stone-800 pb-3">
+      <h2 class="text-2xl font-bold text-stone-900 dark:text-white tracking-tight">Projetos em Destaque</h2>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2">
+      {% for project in projects %}
+      <div class="bg-white dark:bg-[#1a110a] p-6 rounded-xl border border-amber-200/30 dark:border-stone-800 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+        <div class="space-y-2">
+          <div class="text-xs font-semibold uppercase tracking-wider text-athena-gold">{{ project.type }}</div>
+          <h3 class="text-xl font-bold text-stone-900 dark:text-white">{{ project.title }}</h3>
+          <p class="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">{{ project.description }}</p>
+        </div>
+        <div class="pt-4">
+          <a href="{{ project.link }}" target="_blank" class="text-sm font-medium text-athena-gold hover:text-amber-600 inline-flex items-center gap-1 group">
+            Acessar Repositório <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+</main>
