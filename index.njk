@@ -19,7 +19,7 @@ layout: base.njk
         <a href="{{ site.github_org }}" target="_blank" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-white bg-athena-gold hover:bg-amber-600 rounded-lg transition shadow-md">
           Acessar Organização
         </a>
-        <a href="#contact" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-stone-700 dark:text-stone-200 bg-stone-200/60 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 rounded-lg transition">
+        <a onclick="openModal()" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold text-stone-700 dark:text-stone-200 bg-stone-200/60 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 rounded-lg transition">
           Fale Conosco
         </a>
       </div>
@@ -80,5 +80,4 @@ layout: base.njk
       {% endfor %}
     </div>
   </section>
-
 </main>

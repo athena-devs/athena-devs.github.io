@@ -44,7 +44,6 @@
           <a href="#about" class="hover:text-athena-gold transition">Sobre</a>
           <a href="#members" class="hover:text-athena-gold transition">Equipe</a>
           <a href="#projects" class="hover:text-athena-gold transition">Projetos</a>
-          <a href="#contact" class="hover:text-athena-gold transition">Contato</a>
         </div>
       </div>
     </nav>
@@ -54,6 +53,8 @@
     <footer class="w-full px-4 py-6 border-t border-amber-200/30 dark:border-stone-800 text-center text-xs text-stone-400 mt-auto">
       &copy; 2026 Athena-Devs. Todos os direitos reservados.
     </footer>
+
+    {% include "modal.njk" %}
 
     <script>
       const themeIconPath = document.querySelector("#theme-icon path");
